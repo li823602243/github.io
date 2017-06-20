@@ -1,0 +1,127 @@
+@charset "utf-8";
+html{
+	font-size: 62.5%;
+	height: 100%;
+}
+body{
+	font-size: 1rem;
+	height: 100%;
+}
+h2{
+	font-size: 2.4rem;
+}
+ul,li{
+	font-size: 1.6rem
+}
+.wrap{
+	width: 100%;
+}
+.wrap .page{
+	width: 50rem;
+	max-height: 20rem;
+	margin: 0 auto;
+	margin-top: 10rem;
+}
+.wrap .page h2{
+	height: 5rem;
+    line-height: 5rem;
+    border-bottom: 1px solid #e2e2e2;
+}
+.wrap .page .btn-items{
+	font-size: 0;
+	margin-top: 2rem;
+}
+.wrap .page .btn-items .btn-item{
+	display: inline-block;
+	font-size: 1.6rem;
+	border: 1px solid #e2e2e2;
+	padding: 1.4rem 2rem;
+	margin: 1rem;
+	cursor: pointer;
+	border-radius: 2px;
+}
+.wrap .page .btn-items .btn-item:hover{
+	border: 1px solid #5FB878;
+}
+
+/* 
+＊弹出框样式
+*/
+.popcover-modal{
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	background: rgba(0,0,0,.3);
+	top:0;
+	left: 0;
+	overflow: hidden;
+	z-index:55;
+}
+.popcover-modal div{
+	border-radius: 2px;
+}
+.popmain-modal{
+	width: 500px;
+	min-height: 90px;
+	background-color: #fff;
+	box-shadow: 0 0 2px #e2e2e2;
+	position: absolute;
+	top:50%;
+	margin-top: -45px;
+	left: 50%;
+	margin-left: -200px;
+	z-index: 60;
+	padding-bottom: 20px;
+}
+.popmain-modal .poptitle-modal{
+	height: 50px;
+    line-height: 50px;
+    padding-left: 20px;
+    position: relative;
+    border-bottom: 1px solid #e2e2e2;
+    text-align: left;
+}
+.popmain-modal .poptitle-modal .popclose-moadl{
+	position: absolute;
+	width: 20px;
+	height: 20px;
+	top: 10px;
+	right: 10px;
+	background: #000;
+	cursor: pointer;
+}
+.popmain-modal .popinfo-modal{
+	padding: 20px;
+    border: 1px solid;
+    overflow: hidden;
+}
+
+.popmain-modal .popinfo-modal .popicon-modal{
+	float: left;
+    height: 40px;
+    border: 1px solid;
+    width: 40px;
+    margin-left: 20px;
+}
+.popmain-modal .popinfo-modal .poptext-modal{
+	float: left;
+    border: 1px solid;
+    width: 350px;
+    margin-left: 30px;
+    height: 60px;
+}
+.popmain-modal .popbtns-modal{
+	padding-top: 20px;
+    border: 1px solid #F05;
+    text-align: center;
+}
+.popmain-modal .popbtns-modal .popokbtn-modal,
+.popmain-modal .popbtns-modal .popcanbtn-modal{
+	    display: inline-block;
+    padding: 6px 20px;
+    background: blue;
+    color: #fff;
+    font-size: 16px;
+    margin: 5px;
+}
+

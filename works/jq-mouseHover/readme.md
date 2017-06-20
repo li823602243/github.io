@@ -1,0 +1,10 @@
+##仿拉勾鼠标滑过效果
+<ol>
+<li>
+$(".outer").each(function(i){
+        $(this).show($(".inner").eq(i));
+    });
+</li>
+<li>.outer是外部的包裹区域</li>
+<li>.inner是随鼠标移动的蒙层</li>
+</ol>

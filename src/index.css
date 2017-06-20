@@ -1,0 +1,387 @@
+@charset "UTF-8";
+
+html{
+    width: 100%;
+    height: 100%;
+}
+body{
+    font-family: "微软雅黑";
+    height: 100%;
+    font-weight: 300;
+    min-width:480px;
+}
+/*网页加载前动画*/
+.pre-load{
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    z-index: 999;
+}
+.pre-load .pre-load-img{
+    width: 100px;
+    height: 100px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform:translate(-50%,-50%);
+}
+/*头部 banner */
+.banner,.banner-slide,.bgimg,.content{
+    width: 100%;
+    height: 100%;
+}
+.banner{
+    position: relative;
+    overflow: hidden;
+    color:#fff;
+}
+.banner .banner-slide .bgimg {
+    float: left;
+}
+.page1{
+    background: url("../images/page2.jpg") center 10% no-repeat;
+}
+.page2{
+    background: url("../images/page1.jpg") center 10% no-repeat;
+}
+.banner .banner-slide .bgimg .content{
+    padding-top:50px;
+    text-align: center;
+}
+.content figure > img{
+    width: 180px;
+}
+.content h2{
+    font-size: 60px;
+    margin: 40px 0;
+    letter-spacing: 10px;
+}
+.content .line{
+    height: 1px;
+    width: 160px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #fff;
+    margin-bottom:15px;
+}
+.banner .arrow-down{
+    width: 20px;
+    height: 30px;
+    border:1px solid #fff;
+    position: absolute;
+    bottom:80px;
+    left: 50%;
+    border-radius:8px;
+    transform:translate(-50%,0);
+    text-align: center;
+}
+.banner .arrow-down::before{
+    content:"";
+    display: inline-block;
+    width: 1px;
+    height: 8px;
+    background-color: #fff;
+    position: absolute;
+    top:6px;
+    left: 9px;
+}
+.banner .dot-wrap{
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform:translate(-50%,0);
+}
+.banner .dot-wrap .dot{
+    float: left;
+    width: 80px;
+    height: 2px;
+    background-color: #666;
+    margin:0 8px;
+    cursor: pointer;
+}
+.banner .dot-wrap .dot.active{
+    background-color: #fff;
+}
+/*导航条*/
+nav{
+    height: 50px;
+    line-height:50px;
+    background-color: #000;
+    opacity: 0.8;
+    color:#fff;
+    position: fixed;
+    width: 100%;
+}
+nav .navbar{
+    width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.navbar .logo{
+    width: 32px;
+    height: 32px;
+    float: left;
+}
+.navbar .logo:hover img{
+    transform:scale(1.4);
+}
+.navbar .logo img{
+    display: block;
+    width: 32px;
+    height: 32px;
+    margin:9px 0;
+    transition:all 0.3s;
+    transform:scale(1);
+    position: relative;
+}
+.navbar .navlinks{
+    float: right;
+}
+.navbar .navlinks li{
+    float: left;
+    margin-left: 20px;
+}
+.navbar .navlinks li a{
+    padding:0 10px;
+    display: block;
+}
+.navbar .navlinks li a:hover{
+    color:#bbb;
+}
+
+/*about me*/
+.about{
+    height: 100%;
+    background-color: #f1f1f1;
+}
+.aboutme{
+    width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+    padding:50px 40px;
+    text-align: center;
+}
+h2.en-title{
+    font-weight: 500;
+    font-size: 40px;
+    line-height: 80px;
+    text-transform: uppercase;
+}
+ h3.ch-title{
+    font-size: 26px;
+}
+.short-line{
+    width: 100px;
+    height: 1px;
+    background-color: #000;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top:15px;
+    margin-bottom: 30px;
+}
+.desc{
+    width: 480px;
+    line-height: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    text-transform: capitalize;
+}
+.moreinfo{
+    width: 200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top:20px;
+}
+.moreinfo a{
+    height: 45px;
+    line-height: 45px;
+    display: block;
+    border:1px solid #111;
+    transition:all 0.3s;
+    font-weight: 400;
+    cursor:pointer;
+}
+.moreinfo a:hover{
+    border-radius:23px;
+    background-color: #000;
+    color:#fff;
+}
+.aboutme .skill{
+    margin:40px 0;
+    display:box;
+    display:-webkit-box;
+    -webkit-box-pack:justify;
+}
+.aboutme .skill li{
+    width: 120px;
+    height: 120px;
+    position: relative;
+}
+.aboutme .skill li div{
+    border-radius:50%;
+}
+.aboutme .skill li .big-circle{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border:1px dashed #ccc;
+    transition:all 0.3s;
+    margin-bottom: 15px;
+}
+.aboutme .skill li .big-circle .small-circle{
+    position: absolute;
+    width: 50%;
+    height: 50%;
+    background-color: #000;
+    left: 25%;
+    top: 25%;
+    transition: all 0.3s;
+    color:#fff;
+    line-height: 60px;
+}
+.aboutme .skill li .big-circle .hid-circle{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background: #111;
+    transition: all 0.3s;
+    transform:scale(1);
+    opacity: 0;
+    color:#fff;
+    font-size: 18px;
+    line-height: 120px;
+}
+.aboutme .skill li .big-circle .small-circle i{
+    font-size: 28px;
+    vertical-align: middle;
+}
+.aboutme .skill li .big-circle:hover{
+    border:1px solid #333;
+}
+.aboutme .skill li .big-circle:hover .small-circle i{
+    display: none;
+}
+.aboutme .skill li .big-circle:hover .hid-circle{
+    opacity: 0.8;
+    transform:scale(0.8);
+
+}
+/*案例*/
+.works,.contactme{
+    height: 100%;
+}
+.work,.contact{
+    width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+    padding:50px 40px;
+    text-align: center;
+}
+.work .slides{
+    margin-left: -41px;
+    margin-right: -41px;
+    margin-top: 30px;
+}
+.work .slides li{
+    float: left;
+}
+.work .slides li a img{
+    width: 334px;
+    height: auto;
+}
+/*联系我*/
+.contactme{
+    background-color: #f1f1f1;
+}
+.contact .contact-info{
+    padding:40px 0;
+}
+.contact .contact-info .wechat,.other-info{
+    display: inline-block;
+}
+.contact .contact-info .wechat{
+    width: 180px;
+    height: 180px;
+    overflow: hidden;
+    margin-right: 50px;
+}
+.contact .contact-info .wechat img{
+    width: 180px;
+    height: 180px;
+    vertical-align: top;
+}
+.contact .contact-info .other-info{
+    margin-left: 50px;
+    text-align: left;
+    font-weight: 400;
+    line-height: 30px;
+}
+.contact .contact-info .other-info dt{
+    font-size: 18px;
+    color:#424242;
+}
+.contact .contact-info .other-info dd{
+    position: relative;
+    bottom: 8px;
+}
+.contact .contact-info .other-info dd:hover{
+    color:#216DCD;
+}
+
+.banner,.about,.work,.contactme{
+    background-attachment: fixed;
+}
+
+@media (max-width: 999px){
+    nav .navbar{
+        width: 100%;
+    }
+    .navbar .navlinks{
+        float: left;
+    }
+    .aboutme,.contact,.work{
+        width: 100%;
+    }
+
+}
+@media (max-width: 600px){
+    .about,.contactme,.works{
+        height: auto;
+    }
+    .aboutme{
+        padding:50px 0;
+    }
+    .aboutme .skill{
+        display: block;
+    }
+
+    
+    .aboutme .skill li{
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom:40px;
+    }
+    .aboutme .skill li .big-circle{
+        margin-bottom: 8px;
+    }
+    .desc{
+        width: 100%;
+        padding:10px 20px;
+    }
+    .contact .contact-info figure.wechat{
+        display: block;
+        margin-right: auto;
+        margin-left: auto;
+    }
+    .contact .contact-info dl.other-info{
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+    }
+
+}

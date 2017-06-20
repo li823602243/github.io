@@ -1,0 +1,573 @@
+@charset "UTF-8";
+
+body{
+    background-color: #ECEEF1;
+    font-family: "微软雅黑";
+}
+nav{
+    width: 100%;
+    height: 65px;
+    line-height: 65px;
+    box-shadow: 0 0 10px #ccc;
+    position: fixed;
+    top: 0;
+    z-index: 999;
+    background-color: #fff;
+}
+nav .content{
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+nav .content figure,nav .content > ul{
+    float: left;
+}
+nav .content figure{
+    width: 100px;
+    height: auto;
+}
+nav .content figure img{
+    display: inline-block;
+    width: 51px;
+    height: 51px;
+    margin:7px 0 7px 0;
+}
+nav .content > ul li{
+    float: left;
+    margin:0 15px;
+}
+nav .content > ul li a{
+    display: block;
+}
+
+/*隐藏的菜单*/
+nav .content .hid-menu{
+    display: none;
+    float: right;
+    width: 30px;
+    height: 2px;
+    margin-right: 10px;
+    margin-top: 32px;
+    background: #111;
+    position: relative;
+}
+nav .content .hid-menu::before{
+    content:"";
+    display: inline-block;
+    width: 100%;
+    height: 2px;
+    background: #111;
+    position: absolute;
+    top:-9px;
+}
+nav .content .hid-menu::after{
+    content:"";
+    display: inline-block;
+    width: 100%;
+    height: 2px;
+    background: #111;
+    position: absolute;
+    top:9px;
+    left: 0;
+}
+nav .content .hid-menu .hid{
+    display: none;
+    width: 115px;
+    position: absolute;
+    right: -10px;
+    z-index: 9;
+    background: #fff;
+    top:32px;
+    border-left: 1px solid #f1f1f1;
+    border-right: 1px solid #f1f1f1;
+}
+nav .content .hid-menu .hid li{
+    text-align: center;
+    height: 35px;
+    line-height: 35px;
+    border-bottom: 1px solid #f1f1f1;
+}
+nav .content .hid-menu .hid li:hover{
+    background-color: #f1f1f1;
+}
+
+/*banner*/
+.container{
+    width: 100%;
+    background-color: #ECEEF1;
+}
+.top-banner{
+    max-width: 1200px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 100px;
+    position: relative;
+    height: auto;
+}
+.top-banner .top-slide .slide-item figure{
+    width: 100%;
+    position: relative;
+}
+.top-slide .slide-item figure img{
+    display: block;
+    width: 100%;
+    height: 420px;
+}
+.top-banner .top-slide .slide-item figure figcaption{
+    position: absolute;
+    right: 0;
+    height: 100%;
+    top: 0;
+    width: 350px;
+    background-color: rgba(222,222,222,.6);
+    padding:50px 30px;
+}
+.top-banner .top-slide .slide-item figure figcaption .tag{
+    background-color: #19B5FE;
+    padding: 5px 14px;
+    display: inline-block;
+    color: #fff;
+    font-size: 14px;
+    line-height: 18px;
+}
+.top-banner .top-slide .slide-item figure figcaption h2{
+    font-size: 22px;
+    line-height: 30px;
+    font-weight: 500;
+    margin: 10px 0;
+}
+.lines{
+    position: relative;
+    width: 100%;
+    height: 1px;
+    background: #000;
+    margin: 20px 0;
+}
+.lines .color-line{
+    position: absolute;
+    left: 0;
+    height: 2px;
+    width: 30%;
+    background-color: #19B5FE;
+    top: -1px;
+}
+.top-banner .top-slide .slide-item figure figcaption .wrote-info{
+    font-size: 14px;
+    color: #333;
+    line-height: 18px;
+    margin: 0 0 20px 0;
+}
+.top-banner .top-slide .slide-item figure figcaption .wrote-info span:nth-of-type(1){
+    margin-right: 10px;
+}
+.top-banner .top-slide .slide-item figure figcaption .wrote-info i{
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 10px;
+    margin:0 3px;
+}
+.top-banner .top-slide .slide-item figure figcaption .abstract{
+    line-height: 20px;
+}
+.top-banner .top-slide .slide-item figure figcaption .reading{
+    text-align: right;
+    position: relative;
+    bottom:-70px;
+}
+.top-banner .top-slide .slide-item figure figcaption .reading a{
+    display: inline-block;
+    padding:10px 20px;
+    background-color: #111;
+    color: #fff;
+    font-weight: 500;
+
+}
+.top-banner .s-circle{
+    position: absolute;
+    left: 50%;
+    bottom:20px;
+    transform:translate(-50%,0);
+}
+.top-banner .s-circle li{
+    width: 14px;
+    height: 14px;
+    border-radius:50%;
+    border:1px solid #fff;
+    display: inline-block;
+}
+.top-banner .s-circle li.active{
+    background: #fff;
+}
+/*main*/
+.main{
+    max-width: 1200px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 50px;
+}
+/*右边栏*/
+.main aside{
+    float: right;
+    width: 280px;
+    height: auto;
+}
+aside .popular{
+    width: 100%;
+    padding:20px 15px;
+    background-color: #fff;
+    margin-bottom: 20px;
+    box-shadow: 0 0 0 #ECEEF1;
+    border-radius: 3px;
+}
+aside .popular .hot-article li{
+    position: relative;
+    margin-bottom: 20px;
+}
+aside .popular .hot-article li.first-img a{
+    display: block;
+    width: 100%;
+    height: 160px;
+    float: none;
+    margin-right: 0;
+}
+aside .popular .hot-article li.first-img a img{
+    width: 100%;
+    height: 160px;
+}
+aside .popular .hot-article li.first-img .info{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 80px;
+    color:#f5f5f5;
+    font-weight: 300;
+    padding:0 10px;
+}
+aside .popular .hot-article li.first-img .info h4{
+    position: relative;
+    top:40px;
+    color:#f5f5f5;
+}
+aside .popular .hot-article li.first-img .info span{
+    position: relative;
+    top:-15px;
+}
+aside .popular .hot-article li a{
+    display: block;
+    float: left;
+    width: 65px;
+    height: auto;
+    margin-right: 8px;
+}
+aside .popular .hot-article li a img{
+    display: block;
+    width: 65px;
+    height: 65px;
+}
+aside .popular .hot-article li .info{
+    font-size: 14px;
+    color:#666;
+    line-height: 16px;
+}
+aside .popular .hot-article li .info h4{
+    color:#333;
+/*    font-weight: 300;*/
+}
+aside .popular .hot-article li .info span{
+    font-size: 12px;
+    position: relative;
+    bottom:-10px;
+}
+aside .popular h3{
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 40px;
+}
+aside .popular .line{
+    width: 100%;
+    height: 2px;
+    background-color: #000;
+    margin-top:5px;
+    margin-bottom: 20px;
+}
+aside .popular .article-type a{
+    display: inline-block;
+    padding:5px 8px;
+    background-color: blue;
+    color:#fff;
+    margin:4px 8px;
+    border-radius:3px;
+    font-size: 12px;
+}
+aside .popular .article-type a.red{
+    background-color: red;
+}
+aside .popular .article-type a.green{
+    background-color: green;
+}
+aside .popular .article-type a.orange{
+    background-color: orange;
+}
+aside .popular .month{
+    margin-bottom: 8px;
+}
+aside .popular .month a{
+    display: inline-block;
+    background-color: orange;
+    color:#fff;
+    padding:5px 14px;
+    border-radius:3px;
+}
+/*主体列表*/
+.main .main-items{
+    float: left;
+    width: 850px;
+    height: auto;
+}
+.items{
+    padding:40px 30px;
+    background: #fff;
+    box-shadow: 0 0 1px #ccc;
+    border-radius:3px;
+    width: 100%;
+    position: relative;
+    margin-bottom: 30px;
+}
+.items .items-img{
+    display: block;
+    width: 28%;
+    float: left;
+    overflow: hidden;
+}
+.items .items-img img{
+    width: 260px;
+    height: 160px;
+}
+.items .article{
+    float: left;
+    width: 540px;
+    margin-left: 20px;
+}
+.items .article .title{
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 40px;
+    margin-bottom: 20px;
+}
+.items .article .article-content{
+    line-height: 1.4;
+    color: #666;
+    font-size: 14px;
+}
+.items .article .article-info{
+    font-size: 12px;
+    color:#666;
+    margin-top: 20px;
+}
+.items .article .article-info span:nth-of-type(1){
+    margin-right: 10px;
+}
+.items .article .article-info span i{
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 10px;
+    margin:0 3px;
+}
+.gototop{
+    width: 50px;
+    height: 50px;
+    background-color: #222;
+    color:#fff;
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    line-height: 50px;
+    text-align: center;
+    cursor: pointer;
+}
+.gototop a i{
+    font-size: 30px;
+}
+
+@media (max-width: 1199px){
+    nav .content figure{
+        margin-left: 20px;
+    }
+    .top-banner .top-slide .slide-item figure figcaption{
+        right: 0;
+        height: 150px;
+        top:270px ;
+        width: 100%;
+        padding:10px 30px;
+    }
+    .top-banner .top-slide .slide-item figure figcaption .tag{
+        vertical-align: middle;
+    }
+    .top-banner .top-slide .slide-item figure figcaption h2{
+        display: inline-block;
+        vertical-align: middle;
+    }
+    .top-banner .top-slide .slide-item figure figcaption .lines{
+        margin: 5px 0;
+    }
+    .top-banner .top-slide .slide-item figure figcaption .wrote-info{
+        position: absolute;
+        top: 35px;
+        right: 40px;
+    }
+    .top-banner .top-slide .slide-item figure figcaption .reading{
+        bottom:15px;
+    }
+    aside{
+        display: none;
+    }
+    .main .main-items{
+        float: none;
+        width: 100%;
+    }
+    .items{
+        width: 100%;
+    }
+    .items .items-img img{
+        width: 100%;
+        float: left;
+        height: auto;
+        min-height: 140px;
+    }
+    .items .article{
+        float: left;
+        width: 65%;
+        margin-left: 20px
+    }
+    .items .article .title{
+        font-size: 18px;
+        line-height: 28px;
+        margin-bottom: 10px;
+    }
+}
+@media (max-width: 600px){
+    nav .content > ul{
+        display: none;
+    }
+    nav .content .hid-menu{
+        display: block;
+    }
+    .top-banner .top-slide .slide-item figure figcaption .wrote-info{
+        display: none;
+    }
+    .top-banner .top-slide .slide-item figure figcaption .abstract{
+        display: none;
+    }
+    .top-banner .top-slide .slide-item figure figcaption .reading{
+        bottom:-30px;
+    }
+    .items{
+        width: 100%;
+    }
+    .items .items-img{
+        width: 100%;
+        float: none;
+        height: auto;
+    }
+    .items .items-img img{
+        width: 100%;
+        height: auto;
+    }
+    .items .article{
+        float: none;
+        width: 100%;
+        margin-left: 0;
+    }
+    .items .article .title{
+        font-size: 18px;
+        line-height: 28px;
+        margin-bottom: 5px;
+    }
+    .items .article .article-info{
+        font-size: 12px;
+        color:#666;
+        margin-top: 8px;
+    }
+
+}
+
+
+/*博客内容*/
+.artilce{
+    margin-top: 100px;
+    margin-bottom: 50px;
+}
+.artilce .main-items{
+    background-color: #fff;
+    border-radius:2px;
+    padding:45px 30px;
+}
+.artilce .main-items header h1{
+    font-size: 24px;
+    line-height: 30px;
+}
+.artilce .main-items header .article-info{
+    padding:20px 0 0 0;
+    font-size: 12px;
+    color:#666;
+}
+.artilce .main-items header .article-info span{
+        margin-right: 10px;
+}
+.artilce .main-items header .article-info span.wrote-location i{
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 12px;
+    margin-right: 3px;
+}
+.artilce .main-items header .article-info span.wrote-time i{
+    display: inline-block;
+    vertical-align: top;
+    font-size: 12px;
+    margin-right: 3px;
+}
+.article-container{
+    padding-top:20px;
+}
+.article-container .summary{
+    color: #666;
+    font-size: 18px;
+    line-height: 26px;
+    margin-bottom: 10px;
+}
+.article-container .article-img{
+    width: 100%;
+    height: auto;
+}
+
+.article-container .article-img img{
+    width: 100%;
+    height: auto;
+    vertical-align: top;
+}
+.article-container .article-text{
+    font-size: 16px;
+    line-height: 26px;
+    margin-top: 10px;
+    color: #555;
+
+}
+.article-container .article-text p{
+    margin-bottom: 10px;
+    text-indent: 2em;
+}
+.article-container .article-text code{
+    height: auto;
+}
+.article-container .article-text code textarea{
+    width:100%;
+    background:#fdf6e3;
+    border:0;
+    overflow-y:visible;
+    border-left:5px solid #ccc;
+    resize:none;
+    color:#657b83;
+    height: auto;
+
+}

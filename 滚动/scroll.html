@@ -1,0 +1,70 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>滚动</title>
+    <style>
+    *{padding: 0;margin: 0;}
+    html,body{height: 100%;}
+    .nav{
+        height: 50px;
+        position: fixed;
+        color:#fff;
+        line-height: 50px;
+    }
+    .nav ul{
+        overflow: hidden;
+        list-style: none;
+        border:1px solid #f00;
+    }
+    .nav ul li{
+        float: left;
+        list-style: none;
+        padding:0 15px;
+    }
+    .box{
+        border:1px solid #fff;
+        border-radius:20px;
+    }
+    #page{height: 100%;}
+    .bg{
+        height: 100%;
+        overflow: hidden;
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+    }
+    </style>
+    <script src="jquery-1.11.1.min.js"></script>
+    <script>
+    $(function(){
+        $('ul li').hover(function(){
+            var left = $(this).position().left;
+            alert(left)
+        },function(){
+
+        })
+    })
+    </script>
+</head>
+
+<body>
+<div class="nav">
+    <ul>
+        <li class="box">你好</li>
+        <li>我好</li>
+        <li>大家好</li>
+        <li>你们也好</li>
+        <li>一起来</li>
+    </ul>
+</div>
+<div id="page">
+    <div class="bg0 bg" style="background-image:url(page0.jpg)"></div>
+    <div class="bg1 bg" style="background-image:url(page1.jpg)"></div>
+    <div class="bg2 bg" style="background-image:url(page2.jpg)"></div>
+    <div class="bg3 bg" style="background-image:url(page3.jpg)"></div>
+    <div class="bg4 bg" style="background-image:url(page4.jpg)"></div>
+</div>
+</body>
+</html>

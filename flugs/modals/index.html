@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>弹出框插件演示</title>
+	<link rel="stylesheet" href="../../src/reset.css">
+	<link rel="stylesheet" href="modal.css">
+	<script type="text/javascript" src="../../src/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript" src="modal.js"></script>
+</head>
+<body>
+	<div class="wrap">
+		<div class="page">
+			<h2 class="page-title">这是我的弹层插件演示区</h2>
+			<ul class="btn-items">
+				<li class="btn-item item1">alert</li>
+				<li class="btn-item item2">confirm</li>
+				<li class="btn-item item3">tips</li>
+				<li class="btn-item item4">iframe</li>
+				<li class="btn-item item5">photos</li>
+			</ul>
+		</div>
+	</div>
+	<script type="text/javascript">
+		$(function(){
+			$('.item1').on('click',function(){
+				$(this).myModals({
+					width    : 120,
+					height   : 800,
+					ok       : true,
+					cancle   : false,
+					title    : "付款",
+					okText   : "关闭"
+				})
+			})
+		})
+	</script>
+</body>
+</html>

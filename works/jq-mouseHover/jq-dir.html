@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>仿拉勾网鼠标移入移出效果</title>
+    <link rel="shortcut icon" href="../../images/logo1.png">
+    <link rel="stylesheet" href="../../src/reset.css">
+    <style>
+    ul{
+        overflow: hidden;
+        width: 842px;
+        margin-right: auto;
+        margin-left: auto;
+        margin-top: 30px;
+    }
+    li{
+        float: left; 
+        margin-right: 20px;
+        margin-top: 20px;
+    }
+    li figure{
+        position: relative;
+    }
+    li figure img{
+        display: block;
+        width: 400px;
+        height: auto;
+    }
+    li figure figcaption{
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0,.3);
+        color:#fff;
+        font-size: 16px;
+        padding-top: 100px;
+        padding-left: 30px;
+    }
+    li figure figcaption h2{
+        font-size: 20px;
+        line-height: 1.8;
+    }
+    li figure figcaption p{
+        font-size: 16px;
+        line-height: 1.8;
+    }
+    </style>
+</head>
+<body>
+<ul>
+    <li>
+        <figure class="outer">
+            <img src="../../images/item-2.jpg" alt="">
+            <figcaption class="inner">
+                <h2>描述标题</h2>
+                <p>描述信息描述信息描述信息</p>
+            </figcaption>
+        </figure>
+    </li>
+    <li>
+        <figure class="outer">
+            <img src="../../images/item-3.jpg" alt="">
+            <figcaption class="inner">
+                <h2>描述标题</h2>
+                <p>描述信息描述信息描述信息</p>
+            </figcaption>
+        </figure>
+    </li>
+    <li>
+        <figure class="outer">
+            <img src="../../images/item-4.jpg" alt="">
+            <figcaption class="inner">
+                <h2>描述标题</h2>
+                <p>描述信息描述信息描述信息</p>
+            </figcaption>
+        </figure>
+    </li>
+    <li>
+        <figure class="outer">
+            <img src="../../images/item-5.jpg" alt="">
+            <figcaption class="inner">
+                <h2>描述标题</h2>
+                <p>描述信息描述信息描述信息</p>
+            </figcaption>
+        </figure>
+    </li>
+</ul>
+   <script src="../../src/jquery-1.11.1.min.js"></script>
+   <script>
+    ;(function($){
+        $.fn.extend({
+            show:function(ele){
+                var outer = this,
+                    inner = ele,
+                    w = outer.width(),
+                    h = outer.height(),
+                    xpos = w / 2,
+                    ypos = h / 2,             //取该区域的中心点，以其为(0,0)做坐标系
+                    eventType = "",
+                    direct = "";
+                    outer.css({"overflow":"hidden","position":"relative"});
+                    inner.css({"position":"absolute","top":h});
+                    // 鼠标在该区域活动时触发的动画
+                    outer.on("mouseenter mouseleave", function(e) {
+                        var oe = e || event;
+                        var x = oe.offsetX;
+                        var y = oe.offsetY;
+                        // 判断鼠标从上下左右移入移出
+                        var angle = Math.atan((x - xpos) / (y - ypos)) * 180 / Math.PI;
+                        if (angle > -45 && angle < 45 && y > ypos) {
+                            direct = "down";
+                        }
+                        if (angle > -45 && angle < 45 && y < ypos) {
+                            direct = "up";
+                        }
+                        if (((angle > -90 && angle < -45) || (angle > 45 && angle < 90)) && x > xpos) {
+                            direct = "right";
+                        }
+                        if (((angle > -90 && angle < -45) || (angle > 45 && angle < 90)) && x < xpos) {
+                            direct = "left";
+                        }
+                        move(e.type, direct)
+                });
+                    // 鼠标从各方向移入移出改变inner的css 运用animate制作动画
+                    function move(eventType,direct){
+                        if(eventType === "mouseenter") {
+                            switch (direct) {
+                                case "down":
+                                    inner.css({
+                                        "left": 0,
+                                        "top": h
+                                    }).stop(true, true).animate({
+                                        "top": 0
+                                    }, "fast");
+                                break;
+                                case "up":
+                                    inner.css({
+                                        "left": 0,
+                                        "top": -h
+                                    }).stop(true, true).animate({
+                                        "top": "0px"
+                                    }, "fast");
+                                break;
+                                case "right":
+                                    inner.css({
+                                        "left": w,
+                                        "top": 0
+                                    }).stop(true, true).animate({
+                                        "left": 0
+                                    }, "fast");
+                                break;
+                                case "left":
+                                    inner.css({
+                                        "left": -w,
+                                        "top": 0
+                                    }).stop(true, true).animate({
+                                        "left": 0
+                                    }, "fast");
+                                break;   
+                            }
+                        }else{
+                            switch (direct){
+                                case "down":
+                                    inner.stop(true, true).animate({
+                                        "top": h
+                                    }, "slow");
+                                break;
+                                case "up":
+                                    inner.stop(true, true).animate({
+                                        "top": -h
+                                    }, "slow");
+                                break;
+                                case "right":
+                                    inner.stop(true, true).animate({
+                                        "left": w
+                                    }, "slow");
+                                break;
+                                case "left":
+                                    inner.stop(true, true).animate({
+                                        "left": -w
+                                    }, "slow");
+                                break;   
+                            }
+                        }
+                    }  
+            }
+        })
+    })(jQuery);
+
+    $(".outer").each(function(i){
+        $(this).show($(".inner").eq(i));
+    });
+   </script>
+</body>
+</html>

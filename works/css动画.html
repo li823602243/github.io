@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<!-- saved from url=(0078)file:///C:/Users/%E9%83%AD%E5%AD%90%E6%9E%97/Downloads/jsbin.vige.5%20(1).html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta name="robots" content="noindex">
+
+
+  
+  <title>JS Bin</title>
+<style id="jsbin-css">
+figure,figcaption,h2,p,img{
+  padding: 0;
+  margin: 0;
+}
+figure{
+  float: left;
+  width: 33.3%;
+  height: 280px;
+  overflow: hidden;
+  position: relative;
+  background: #2f0f00;
+}
+figure img{
+  opacity: 0.8;
+  transition:all,0.35s;
+}
+figure figcaption{
+  position: absolute;
+  z-index:22;
+  color:#fff;
+  top: 0;
+  left: 0;
+}
+figure figcaption p,h2,div,h3{
+  transition:all,0.35s;
+}
+@media screen and (max-width:600px){
+  figure{width:100%}
+}
+@media screen and (min-width:601px) and (max-width:999px){
+  figure{width:50%}
+}
+@media screen and (min-width:1000px){
+  figure{width:33.3%}
+}
+.test1 figcaption{
+  padding: 20px;
+}
+.test1 figcaption p{
+  background: #fff;
+  color:#ccc;
+  margin:5px;
+  padding:0 10px;
+  text-align: center;
+  -webkit-transform:translate(-120px,0)
+}
+.test1 figcaption p:nth-of-type(1){transition-delay:0.05s}
+.test1 figcaption p:nth-of-type(2){transition-delay:0.1s}
+.test1 figcaption p:nth-of-type(3){transition-delay:0.15s}
+.test1:hover figcaption p{
+   transform:translate(0px,0px)
+}
+.test1:hover img{
+  transform:translate(-50px,0);opacity: .5;
+}
+.test2 figcaption{
+  width: 100%;
+  height: 100%;
+}
+.test2 figcaption .kuang{
+  position: absolute;
+  width: 80%;
+  height: 80%;
+  margin-top: 6%;
+  margin-left: 8%;
+  border:2px solid #fff;
+  transform:translate(0,-300px) rotate(0deg);
+}
+.test2 figcaption h2{margin-top: 15%;margin-left: 15%;}
+  
+.test2 figcaption p{margin-left: 15%;transform:translate(0,50px);opacity: 0;}
+.test2:hover img{opacity: 0.5;transform:translate(-30px,0)}
+.test2:hover figcaption p{transform:translate(0,0);opacity: 1;}
+.test2:hover figcaption .kuang{
+  transform:translate(0,0) rotate(360deg);
+}
+.test3 figcaption{width: 100%;}
+.test3 figcaption h2{  margin-top:15% ; margin-left: 20%;transform:skew(-90deg)}
+.test3 figcaption p{ margin-left: 20%;transform:skew(90deg)}
+
+.test3:hover img{opacity: 0.5;transform:translate(-30px,0)}
+
+.test3:hover figcaption p{transform:skew(0deg)}
+
+.test3:hover figcaption h2{transform:skew(0deg);transition-delay:0.1s}
+
+.test4 figcaption{width: 100%;height: 100%;}
+.test4 figcaption div{width: 80%;height: 80%;border:2px solid #FFF;margin-top: 8%;margin-left: 8%;position: absolute;transform:scale(1.5,1.5);opacity: 0;}
+
+.test4 figcaption h2{margin-left: 20%;opacity: 0;transform:scale(1.2,1.2);margin-top: 20%;}
+
+.test4 figcaption p{margin-left: 20%;opacity: 0;transform:scale(1.2,1.2)}
+
+.test4 img{transform:scale(1,1)}
+
+.test4:hover img{opacity: 0.5;transform:scale(1.2,1.2)}
+.test4:hover figcaption div{transform:scale(1,1);opacity: 1;}
+.test4:hover figcaption p{
+  transform:scale(1,1);opacity: 1;
+}
+.test4:hover figcaption h2{transform:scale(1,1);opacity: 1;}
+
+.test5 figcaption{width: 100%;height: 100%;}
+.test5 figcaption .txt{position: absolute;bottom: 0;height: 20%;background: blue;color:#fff;transform:translate(0,100px)}
+.test5 figcaption h2{margin-top: 20%;margin-left: 15%;transform:translate(0,0);opacity: 0;}
+.test5 figcaption p{margin-left: 15%;transform:translate(0,0);opacity: 0;}
+
+.test5:hover img{opacity: 0.5;transform:translate(0,-20px)}
+
+.test5:hover figcaption .txt{transform:translate(0,0)}
+.test5:hover figcaption h2{transform:translate(0,-50px);opacity: 1;}
+.test5:hover figcaption p{transform:translate(0,-50px);opacity: 1;}
+
+.test6 figcaption h2{margin-top: 20%;margin-left: 15%;}
+.test6 figcaption h3{position: absolute;margin-top: 20%;
+    margin-left: 70%;opacity: 0;transform:translate(0 ,70px)}
+.test6 figcaption p{margin-left: 15%;}
+.test6 figcaption{width: 100%;height: 100%;}
+.test6 figcaption .txt{width: 120%;height: 100%;position: absolute;bottom: -100%;background: #ff0;opacity: .5;}
+.test6:hover img{transform:scale(1.2,1.2)}
+.test6:hover figcaption .txt{transform:rotate(-15deg);transform-origin:0 0}
+
+.test6:hover figcaption h3{opacity: 1;transform:translate(0,0) scale(1.2,1.2)}
+
+.test7 figcaption{width: 100%;height: 100%;}
+
+.test7 figcaption .div1{width: 90%;height: 70%;position: absolute;border-top:1px solid #fff;border-bottom: 1px solid #fff;top:18%;left:8%;opacity: 0;transform:translate(300px,0)}
+
+.test7 figcaption .div2{width: 70%;height: 90%;position: absolute;border-right:1px solid #fff;border-left: 1px solid #fff;top:8%;left:15%;opacity: 0;transform:translate(0,-300px)}
+.test7 figcaption h2{margin-top: 20%;margin-left: 15%;opacity: 0;transform:scale(0.2,0.2)}
+.test7 figcaption p{margin-left: 15%;opacity: 0;transform:scale(1.2,1.2)}
+.test7:hover img{opacity: 0.5;transform:scale(1.2,1.2)} 
+
+.test7:hover figcaption .div1{transform:translate(0,0);opacity: 1;}
+.test7:hover figcaption .div2{transform:translate(0,0);opacity: 1;}
+.test7:hover figcaption h2{opacity: 1;transform:scale(1,1)}
+.test7:hover figcaption p{opacity: 1;transform:scale(1,1)}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</style>
+</head>
+<body>
+<figure class="test2">
+  <img src="css动画_files/下载.jpg" alt="图pain">
+  <figcaption>
+      <div class="kuang"></div>
+  <h2>图面注解</h2>
+  <p>图片描述</p>
+  </figcaption>
+</figure>
+  <figure class="test1">
+  <img src="css动画_files/下载.jpg" alt="图pain">
+  <figcaption>
+  
+  <h2>图面注解</h2>
+  <p>图片描述1</p>
+     <p>图片描述2</p> 
+    <p>图片描述3</p>
+      
+  </figcaption>
+</figure>
+  <figure class="test3">
+  <img src="css动画_files/下载.jpg" alt="图pain">
+  <figcaption>
+  <h2>斜切动画</h2>
+  <p>斜切动画斜切动画</p>
+  </figcaption>
+</figure>
+  <figure class="test4">
+    
+  <img src="css动画_files/下载.jpg" alt="图pain">
+  <figcaption>
+    <div></div>
+  <h2>图面注解图面注解</h2>
+  <p>图片描述</p>
+  </figcaption>
+</figure>
+   <figure class="test5">
+    
+  <img src="css动画_files/下载.jpg" alt="图pain">
+  <figcaption>
+  <h2>图面注解图面注解</h2>
+  <p>图片描述</p>
+     <div class="txt">123图面注解图面注解图面注解图面注解图面注解图面注解图面注解图面注解图面注解图面注解</div>
+  </figcaption>
+    
+</figure>
+   <figure class="test6">
+    
+  <img src="css动画_files/下载.jpg" alt="图pain">
+  <figcaption>
+  <h2>图面注解图面注解</h2>
+  <p>图片描述</p>  <h3 class="intro">about me</h3>
+    <div class="txt"></div>
+  
+  </figcaption>
+</figure>
+   <figure class="test7">
+    
+  <img src="css动画_files/下载.jpg" alt="图pain">
+  <figcaption>
+    <div class="div1"></div>
+    <div class="div2"></div>
+  <h2>图面注解图面注解</h2>
+  <p>图片描述</p>
+  </figcaption>
+</figure>
+
+</body></html>

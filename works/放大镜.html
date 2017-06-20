@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>JS实现购物网站放大镜功能</title>
+    <link rel="shortcut icon" href="../images/logo1.png">
+    <link rel="stylesheet" href="../src/reset.css">
+    <script src="../src/jquery-1.11.1.min.js"></script>
+    <style>
+    img{
+        display: block;
+        /*只是为了方便 不想处理img元素对齐时的间隙*/
+    }
+    .page{
+        width: 100%;
+        height: 800px;
+        margin-left: auto;
+        margin-right: auto;
+        background-image: url(imgs/jdbg.png);
+    }
+    .placeholder{
+        width: 100%;
+        height: 229px;
+        background-color: transparent;
+    }
+    .main{
+        width: 1200px;
+        height: 800px;
+        margin: 0 auto;
+    }
+    /*为了与京东的背景图片保持一致的边框所以设置了position*/
+    .middle-pics{
+        width: 450px;
+        height: 450px;
+        overflow: hidden;
+        border:1px solid #ccc;
+        position: relative;
+        left:-5px;
+        cursor: move;
+    }
+    #mask{
+        width: 300px;
+        height: 300px;
+        background: rgba(0,0,0,.2);
+        position: absolute;
+        left: 0;
+        top:0;
+        display: none;
+    }
+    .small-pics > ol{
+        overflow: hidden;
+        height: 64px;
+        line-height: 64px;
+        position: relative;
+        top: 18px;
+        width: 360px;
+        background: #fff;
+        left: 34px;
+    }
+    .small-pics > ol >li{
+        float: left;
+        height: 64px;
+        width: 64px;
+        margin-right: 7px;
+        padding:3px;
+        border:2px solid transparent;
+    }
+    .small-pics > ol >li img{
+        display: block;
+    }
+    .small-pics > ol >li.red{
+        border:2px solid #f00;
+    }
+    .left,.hid-big-pics{
+        float: left;
+    }
+    .hid-big-pics{
+        width: 540px;
+        height: 540px;
+    }
+    .hid-big-pics{
+        border:1px solid #ccc;
+        overflow: hidden;
+        position: relative;
+        background: #fff;
+        display: none;
+    }
+    .hid-big-pics li{
+        display: none;
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+    .hid-big-pics li img{
+        position: absolute;
+        width: 800px;
+        height: 800px;
+    }
+    .hid-big-pics li.show{
+        display: block;
+    }
+    </style>
+</head>
+<body>
+    <div class="page">
+    <div class="placeholder"></div>
+        <div class="main clearfix">       
+            <figure class=" left">
+            <!-- 主图 -->
+                <ul class="middle-pics">
+                    <li><img src="imgs/mjd1.jpg" alt="450*450显示的大图"></li>
+                    <li><img src="imgs/mjd2.jpg" alt="450*450显示的大图"></li>
+                    <li><img src="imgs/mjd3.jpg" alt="450*450显示的大图"></li>
+                    <li><img src="imgs/mjd4.jpg" alt="450*450显示的大图"></li>
+                    <li><img src="imgs/mjd5.jpg" alt="450*450显示的大图"></li>
+                    <div id="mask"></div>
+                </ul>
+                <!-- 缩略图 -->
+                 <figure class="small-pics">
+                        <ol>
+                            <li class="red"><img src="imgs/sjd1.jpg" alt="58*58下方控制图片显示的小图"></li>
+                            <li><img src="imgs/sjd2.jpg" alt="58*58下方控制图片显示的小图"></li>
+                            <li><img src="imgs/sjd3.jpg" alt="58*58下方控制图片显示的小图"></li>
+                            <li><img src="imgs/sjd4.jpg" alt="58*58下方控制图片显示的小图"></li>
+                            <li><img src="imgs/sjd5.jpg" alt="58*58下方控制图片显示的小图"></li>
+                        </ol>
+                </figure>
+            </figure>
+            <!-- 放大的细节图 -->
+            <div class="hid-big-pics">
+                <ul>
+                    <li><img src="imgs/bjd1.jpg" alt="800*800右侧隐藏的大图"></li>
+                    <li><img src="imgs/bjd2.jpg" alt="800*800右侧隐藏的大图"></li>
+                    <li class="show"><img src="imgs/bjd3.jpg" alt="800*800右侧隐藏的大图"></li>
+                    <li><img src="imgs/bjd4.jpg" alt="800*800右侧隐藏的大图"></li>
+                    <li><img src="imgs/bjd5.jpg" alt="800*800右侧隐藏的大图"></li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+    <script>
+    $(function(){
+        // 获取隐藏的细节图大小与外框的大小
+        var mWidth = $('#mask').width(),mHeight = $('#mask').height();
+        var bImgWidth =$('.hid-big-pics li img').width();
+        var bImgHeight =$('.hid-big-pics li img').height();
+        var bDivWidth =$('.hid-big-pics').width();
+        var bDivHeight =$('.hid-big-pics').height();
+        
+        console.log(mWidth+','+mHeight)
+        // 鼠标在小图片上移动，主图切换对应的图片，小图片的边框样式切换
+        $('.small-pics li').on('mouseenter',function(){
+            var _sli = $(this);
+            var _index = _sli.index();
+            _sli.addClass('red').siblings().removeClass('red');
+            $('.middle-pics li').eq(_index).css({'display':'block'}).siblings().css({'display':'none'});
+        })
+        // 鼠标移入主图时，浮层显示，大图片显示
+        $('.middle-pics li').on('mouseenter',function(){
+            var _mli = $(this);
+            var _index = _mli.index();
+            $('#mask').css({'display':'block'});
+            $('.hid-big-pics').css({'display':'block'})
+            $('.hid-big-pics li').eq(_index).css({'display':'block'}).siblings().css({'display':'none'});
+        })
+        // 鼠标离开主图
+        $('.middle-pics li').on('mouseleave',function(){
+            var _mli = $(this);
+            var _index = _mli.index();
+            $('#mask').css({'display':'none'});
+            $('.hid-big-pics').css({'display':'none'});
+        })
+        $('#mask').on('mouseenter',function(){
+             $('.hid-big-pics').css({'display':'block'})
+        })
+        // 鼠标在主图里面移动时
+        $('.middle-pics li').on('mousemove',function(e){
+            $('#mask').css({'display':'block'});
+            var x = e.pageX, y = e.pageY;
+            var pWidth = $(this).width(),pHeight = $(this).height();
+            var pleft = $(this).offset().left,ptop=$(this).offset().top;
+            var _left = x - pleft -mWidth/2;
+            var _top = y - ptop - mHeight/2;
+            // 保证浮层一直在主图内部
+            if(_left<0){
+                _left = 0;
+            }else if(_left>pWidth - mWidth){
+                _left = pWidth - mWidth;
+            }
+            if(_top<0){
+                _top = 0;
+            }else if(_top>pHeight - mHeight){
+                _top = pHeight - mHeight;
+            }
+            $('#mask').css({'left':_left,'top':_top});
+            // 设置细节图移动的距离
+            perX = _left / ( pWidth - mWidth);
+            perY = _top / (pHeight - mHeight);
+            $('.hid-big-pics li').css({
+                'left': -perX * ( bImgWidth - bDivWidth ),
+                'top': -perY * ( bImgHeight - bDivHeight )
+            })
+
+        })
+    })
+  
+// 由于页面很简单 原谅我将css js html放在了一个页面中
+        
+    </script>
+</body>
+</html>

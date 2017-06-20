@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>轮播插件展示</title>
+    <link rel="stylesheet" href="reset.css">
+</head>
+<body>
+    <div class="slides" data-setting='{"width":"500","height":"300","overflow":"hidden"}'>
+        <img src="../images/item-1.jpg" alt="轮播图片" title="pic1">
+        <img src="../images/item-2.jpg" alt="轮播图片" title="pic2">
+        <img src="../images/item-3.jpg" alt="轮播图片" title="pic3">
+        <img src="../images/item-4.jpg" alt="轮播图片" title="pic4">
+    </div>
+<br>
+<br>
+<div class="slides" data-setting='{"width":"800","height":"400","overflow":"hidden"}'>
+        <img src="../images/item-1.jpg" alt="轮播图片" title="pic1">
+        <img src="../images/item-2.jpg" alt="轮播图片" title="pic2">
+        <img src="../images/item-3.jpg" alt="轮播图片" title="pic3">
+        <img src="../images/item-4.jpg" alt="轮播图片" title="pic4">
+    </div>
+
+    <script src='jquery-1.11.1.min.js'></script>
+    <script src='jq-slide.js'></script>
+    <script>
+    $(function(){
+        carousels.init($('.slides'));
+    })
+    </script>
+</body>
+</html>

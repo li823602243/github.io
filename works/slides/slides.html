@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8"> 
+ <title>轮播示意图</title>
+ <style>
+    
+ </style>
+</head>
+<body>
+    <div class="slides">
+        <img src="1.jpg" alt="轮播用图片" width="520" height="640">
+        <img src="2.jpg" alt="轮播用图片" width="520" height="640">
+        <img src="3.jpg" alt="轮播用图片" width="520" height="640">
+        <img src="4.jpg" alt="轮播用图片" width="520" height="640">
+        <img src="5.jpg" alt="轮播用图片" width="520" height="640">
+    </div>
+    <script type="text/javascript" src="jquery-1.11.2.min.js"></script>
+    <script type="text/javascript">
+    $(function(){
+        var $w = $(".slides img")[0].width;     
+        var $h = $(".slides img")[0].height;
+        $(".slides").css({
+            "width":$w,
+            "height":$h,
+            "overflow":"hidden",
+            "position":"relactive",
+            "margin":"0 auto"
+        })
+        $(".slides img").css({
+            "position":"absolute",
+            "top":0,
+            "left":0,
+        })
+        var i =0;
+            setInterval(function(){
+                $(".slides img").eq(i).fadeIn().siblings().fadeOut();
+                if(i<$(".slides img").length){
+                    i++;
+                }else{
+                    i=0;
+                }
+            },2000)
+           
+})
+    </script>
+</body>
+</html>

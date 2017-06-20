@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>海报画廊</title>
+        <style type="text/css">
+            *{
+                padding: 0;
+                margin: 0;
+            }
+            body{
+                background-color: #fff;
+                color: #555;
+                font-family: 'Avenir Next', 'Lantinghei SC';
+                font-size: 14px;
+                /*-webkit-font-smoothing：none | subpixel-antialiased | antialiased
+                 *none：对低像素的文本比较好
+                 *subpixel-antialiased：默认值
+                 *antialiased：抗锯齿
+
+                 *-moz-osx-font-smoothing是mozilla给特定操作系统推出的特性增强
+                 *设置grayscale对于图标字体表现更清晰，减轻次像素渲染带来的相邻像素色彩污染问题
+                 */
+                -webkit-font-smoothing: antialiased;
+                -moz-osx-font-smoothing: grayscale;
+            }
+            .wrap  {
+                width: 100%;
+                height: 600px;
+                overflow: hidden;
+                position: absolute;
+                top: 50%;
+                margin-top: -300px;
+                background: #333;
+                -webkit-perspective: 800px;
+
+            }
+            .photo{
+                width: 260px;
+                height: 320px;
+                position: absolute;
+                z-index: 1;
+                box-shadow: 0 0 1px  rgba(0,0,0,.1);
+                transition:all 0.5s;
+            }
+
+
+            .photo .side{
+                width: 100%;
+                height: 100%;
+                background: #eee;
+                position: absolute;
+                top: 0;
+                right: 0;
+                padding: 20px;
+                box-sizing:border-box;
+            }
+            .photo .side-front .images{
+                width: 100%;
+                height: 250px;
+                line-height:250px;
+                overflow: hidden;
+            }
+            .photo .side-front .images img{
+                width: 100%;
+            }
+            .photo .side-front .caption{
+                text-align: center;
+                font-size: 16px;
+                line-height:50px;
+            }
+
+            .photo .side-back .desc{
+                color:#666;
+                font-size:14px;
+                line-height:1.5;
+            }
+            /*选中的图片*/
+            .photo-center{
+                left: 50%;
+                top: 50%;
+                width: 260px;
+                height: 320px;
+                margin:-130px 0 0 -160px;
+                z-index: 999;
+            }
+            /*翻转的样式*/
+            .photo-wrap{
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                -webkit-transform-style:preserve-3d;
+                transition: all 0.6s;
+                transform-origin: 0% 50%;
+            }
+            .photo-center{
+                transition: all 0.6s;
+            }
+            .photo-wrap .side-front{
+                -webkit-transform:rotateY(0deg);
+            }
+            .photo-wrap .side-back{
+                -webkit-transform: rotateY(180deg);
+            }
+            .photo-wrap .side{
+                -webkit-backface-visibility: hidden;
+            }
+            .photo-front .photo-wrap{
+                -webkit-transform: translate(0,0) rotateY(0deg);
+            }
+            .photo-back .photo-wrap{
+                -webkit-transform: translate(260px,0) rotateY(180deg);
+            }
+            .nav{
+                width: 80%;
+                position: absolute;
+                z-index: 999;
+                left: 10%;
+                bottom: 40px;
+                height: 25px;
+                line-height: 25px;
+                text-align: center;
+            }
+            .nav span.i-cont{
+                display: inline-block;
+                width: 25px;
+                height: 25px;
+                vertical-align: top;
+                background: #fff;
+                border-radius: 50%;
+                transform:scale(.6);
+                cursor:pointer;
+                transition:all .5s;
+            }
+            .nav span.i-current{
+                background-color: #ff0;
+                transform:scale(1);
+            }
+            .nav span.i-back{
+                background-color: #f00;
+            }
+            .photo{
+                top: 50%;
+                left: 50%;
+                margin:-130px 0 0 -160px;
+            }
+
+        </style>
+    </head>
+    <!-- 禁止用户选中网页上的内容，IE及Chrome下的方法一样，使用 onselectstart="return false"
+      -- Firefox 下，控制 css: body {-moz-user-select: none;}
+    -->
+    <body onselectstart="return false;" style="-moz-user-select:none;">
+    <div class="wrap" id="wrap">
+       <!--负责平移旋转-->
+        <div class="photo photo-front" onclick="turn(this)" id="photo_{{index}}">
+            <!--负责翻转-->
+            <div class="photo-wrap">
+                <div class="side side-front">
+                    <p class="images"><img src="images/{{img}}" alt=""></p>
+                    <p class="caption">{{caption}}</p>
+                </div>
+                <div class=" side side-back">
+                    <p class="desc">{{desc}}</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <script src="images/data.js"></script>
+    <script>
+        function g(id){
+            if(id.substr(0,1)==="."){
+                return document.getElementsByClassName(id.substr(1));
+            }else{
+                return document.getElementById(id);
+            }
+
+        }
+//        向页面增加元素 遍历data里面所有数据
+        function addItems(){
+            var _html = [];
+            var _nav =[];
+            for(i in data){
+                var item = g('wrap').innerHTML.replace(/^\s*/,'').replace(/\s*$/,'')
+                        .replace(/{{index}}/g,i)
+                        .replace(/{{img}}/g,data[i].img)
+                        .replace(/{{caption}}/g,data[i].caption)
+                        .replace(/{{desc}}/g,data[i].desc);
+                _html.push(item);
+                _nav.push("<span id='nav_"+i+"' onclick=turn(g(\'photo_"+i+"\')) class='i-cont'>&nbsp;</span>");
+            }
+            _html.push("<div class='nav'>"+_nav.join('')+"</div>");
+            g('wrap').innerHTML = _html.join('');
+        }
+        addItems();
+//        定义一个随机数，range为数组，可自定义范围
+        function random(range){
+            var max = Math.random()*range[1];
+            var min = Math.random()*range[0];
+            var diff = max - min;
+            var number = Math.ceil( diff * Math.random() + min );
+            return number;
+        }
+       
+//        计算左右分区的位置
+        function range(){
+            var range = {left:{x:[],y:[]},right:{x:[],y:[]}};
+            var wrap={
+                w:g('wrap').clientWidth,
+                h:g('wrap').clientHeight
+            };
+            var photo={
+                w:g(".photo")[0].clientWidth,
+                h:g(".photo")[0].clientHeight
+            };
+            range.wrap = wrap;
+            range.photo = photo;
+            range.left.x = [0,wrap.w/2 - photo.w];
+            range.left.y = [0,wrap.h];
+            range.right.x = [wrap.w- photo.w/2+130,wrap.w];;
+            range.right.y = [0,wrap.h];
+            return range;
+        }
+//        定义一个居中的图片
+        function center(num){
+            var photos=[];
+            for(var i =0 ;i<data.length;i++){
+                g("photo_"+i).className = g("photo_"+i).className.replace(/\s*photo-center\s*/,"");
+                g("photo_"+i).className = g("photo_"+i).className.replace(/\s*photo-front\s*/,"");
+                g("photo_"+i).className = g("photo_"+i).className.replace(/\s*photo-back\s*/,"");
+                photos.push(g("photo_"+i));
+                g("photo_"+i).style.top="";
+                g("photo_"+i).style.left="";
+                g("photo_"+i).style.transform="rotate(360deg) scale(1.3)";
+                g("photo_"+i).className +=' photo-front ';
+            }
+             for(var i =0 ;i<data.length;i++){
+                g("nav_"+i).className = g("nav_"+i).className.replace(/\s*i-current\s*/,"");
+                g("nav_"+i).className = g("nav_"+i).className.replace(/\s*i-back\s*/,"");
+            }
+            g("photo_"+num).className += " photo-center";
+            g("photo_"+num).style.transform ="scale(1.3)";
+            g("nav_"+num).className += " i-current ";
+            photos.splice(num,1);
+//            分区域
+            var photos_left = photos.splice(0,Math.ceil(photos.length/2));
+            var photos_right = photos;
+            var ranges = range();
+            for(s in photos_left){
+                photos_left[s].style.left = random(ranges.left.x)+"px";
+                photos_left[s].style.top = random(ranges.left.y)+"px";
+                photos_left[s].style.transform = "rotate("+random([-50,50])+"deg) scale(1)";
+            }
+            for(s in photos_right){
+                photos_right[s].style.left = random(ranges.right.x)+"px";
+                photos_right[s].style.top = random(ranges.right.y)+"px";
+                photos_right[s].style.transform = "rotate("+random([-50,50])+"deg) scale(1)";
+            }
+
+        }
+        center(random([0,data.length-1]));
+
+//       单击图片翻转
+        function turn(elem){
+            var cls = elem.className;
+            var n = elem.id.split("_")[1];
+            if(!(/photo-center/.test(cls))){
+                return center(n);
+            };
+            if(/photo-front/.test( cls)){
+                cls = cls.replace(/photo-front/,'photo-back');
+
+                g('nav_'+n).className +=' i-back ';
+            }else{
+                cls = cls.replace(/photo-back/,'photo-front');
+                g('nav_'+n).className = g('nav_'+n).className.replace(/\s*i-back\s*/, '')
+            }
+            return elem.className = cls;
+        }
+
+    </script>
+    </body>
+     </html>

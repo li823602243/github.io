@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>个人网站 | 轮播图</title>
+    <link rel="shortcut icon" href="../images/logo1.png">
+    <link rel="stylesheet" href="../src/reset.css">
+    <link rel="stylesheet" href="../src/index.css">
+    <link rel="stylesheet" href="http://at.alicdn.com/t/font_1473180581_777307.css">
+    <style>
+    *{padding: 0;margin: 0;}
+    .clearfix::after{
+        display: block;
+        content:"";
+        clear: both;
+    }
+    .list{
+        margin-top: 60px;
+        width: 600px;
+        height: 375px;
+        margin-left: auto;
+        margin-right: auto;
+        overflow: hidden;
+        position: relative;
+    }
+    .item{
+        float: left;
+    }
+    .item img{
+        width: 600px;
+        height: auto;
+        vertical-align: top;
+    }
+    .viewpoint{
+
+    }
+    </style>
+</head>
+<body>
+<div class="list clearfix">
+    <div class="item"><img src="../images/item-1.jpg" alt=""></div>
+    <div class="item"><img src="../images/item-2.jpg" alt=""></div>
+    <div class="item"><img src="../images/item-3.jpg" alt=""></div>
+    <div class="item"><img src="../images/item-4.jpg" alt=""></div>
+    <div class="item"><img src="../images/item-5.jpg" alt=""></div>
+    <div class="item"><img src="../images/item-6.jpg" alt=""></div>
+</div>
+    <script src="../src/jquery-1.11.1.min.js"></script>
+    <script>
+        $(function(){
+            var current = 0;
+            var prev = $("<h2 class=prev><</h2>");
+            var next = $("<h2 class=next>></h2>");
+            var indexBtn = $("<ul class='index-btn'><li class='active'></li><li></li><li></li><li></li><li></li></ul>");
+            indexBtn.appendTo($('.list'));
+            prev.appendTo($('.list'));
+            next.appendTo($('.list'));
+            $('.index-btn').css({
+                'position':'absolute',
+                'bottom':'20px',
+                'left':'50%',
+                'transform':'translate(-50%,0)',
+                'z-index':66,
+                'text-align':'center'
+            })
+            $('.index-btn li').css({
+                'display':'inline-block',
+                'width':14,
+                'height':14,
+                'border-radius':'50%',
+                'border':'1px solid #fff',
+                'margin':'4px'
+            })
+            $('.index-btn li.active').css({
+               'background-color':'#fff'
+            })
+            $('.prev , .next').css({
+                'position': 'absolute',
+                'width':28,
+                'height':40,
+                'top':'50%',
+                'color':'#ccc',
+                'background-color':'rgba(0,0,0,0.2)',
+                'text-align':'center',
+                'line-height':'40px',
+                'transform':'translate(0,-50%)',
+                'cursor':'pointer',
+                'display':'none'
+            })
+            $('.next').css({
+                'right':0
+            })
+             $('.prev').css({
+                'left':0
+            })
+            var view = $("<div class='viewpoint'></div>");
+            $('.item').wrapAll(view);
+            var num = $('.item').length;
+            var w =  $('.item').width(),h =  $('.item').height();
+            $('.viewpoint').css({
+                'width':num * w,
+                'height': h,
+                'position':'relative',
+                'left':0
+            })
+            var next = function(){
+                $('.viewpoint').stop(true,true).animate({
+                    left:-w
+                },2000,function(){
+                    $('.item').first().insertAfter($('.item').last());
+                    $('.viewpoint').css({"left":0})
+                })         
+            }
+            var prev = function(){
+                 $('.item').last().insertBefore($('.item').first());
+                 $('.viewpoint').css({"left":-w})
+                $('.viewpoint').stop(true,true).animate({
+                    left:0
+                },2000) 
+            }        
+
+            $('.next').on('click',function(){
+                next();
+            })
+            $('.prev').on('click',function(){
+                prev();
+            })
+
+             var time;
+            time = setInterval(next,3000);
+            $('.viewpoint').on('mouseenter',function(){
+                clearInterval(time);
+                 $('.prev , .next').css({'display':'block'})
+            })
+            $('.viewpoint').on('mouseleave',function(){
+                  $('.prev , .next').css({'display':'none'})
+                time = setInterval(next,3000);
+            })
+           
+
+        })
+    </script>
+
+</body>
+</html>

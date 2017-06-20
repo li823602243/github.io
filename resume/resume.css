@@ -1,0 +1,231 @@
+@charset "UTF-8";
+
+::selection{
+    background-color: #111;
+    color:#fff;
+}
+body{
+    background-color: #e0e0e0;
+    font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing: antialiased;
+    color:#111;
+    font-size: 16px;
+}
+
+/*屏幕浮动菜单*/
+aside{
+    position: fixed;
+    right: 0;
+    top: 50%;
+    color: #fff;
+    transform:translate(0,-50%);
+}
+aside ul li{
+    line-height: 1.5;
+    margin-top:6px;
+    border-radius: 5px  0 0 5px;
+    overflow: hidden;
+    background: #111;
+}
+aside ul li a{
+    display: inline-block;
+    padding: 10px;
+}
+aside ul li a:active, aside a:hover, aside a:link, aside a:visited{
+    color:#fff;
+    text-decoration: none;
+}
+.container{
+    margin-top: 10px;
+}
+.container main{
+    max-width:1040px;
+    margin-left: auto;
+    margin-right: auto;
+}
+/*header*/
+header{
+    padding:30px 40px;
+    background: #333;
+    overflow: hidden;
+    color:#fff;
+}
+header figure{
+    float: left;
+}
+header figure img{
+    width: 130px;
+    height: 130px;
+}
+header address{
+    float: left;
+    margin-left: 20px;
+}
+header address ul li{
+    display: list-item;
+    line-height: 33px;
+}
+header address ul li i.iconfont{
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 8px;
+}
+
+header section{
+    float: right;
+}
+header section h1{
+    font-size: 52px;
+    line-height: 1.4;
+}
+header section h2{
+    font-size: 24px;
+    line-height: 2;
+}
+@media screen and (max-width: 768px){
+    aside{
+        position: relative;
+        top:0;
+        transform:translate(0);
+        text-align: center;
+    }
+    aside ul li{
+        display: inline-block;
+        border-radius:5px;
+        width: 20%;
+    }
+    .container main{
+        width: 100%;
+    }
+    header figure{
+        display: none;
+    }
+    header address{
+        float: none;
+        margin-left: 0;
+    }
+     header section{
+        float: none;
+    }
+}
+
+/*主体内容*/
+main article.row {
+    overflow: hidden;
+    padding:30px 0;
+    background: #fff;
+    height: auto;
+}
+main article.row .column1{
+    width: 50%;
+    float: left;
+    padding-left: 45px;
+}
+main article.row .column2{
+    width: 50%;
+    float: right;
+    padding-left:45px;
+}
+ .title{
+    border-left: 2px solid #333;
+    position: relative;
+}
+ .title h3{
+    font-size: 24px;  
+    position: relative;
+    line-height: 40px;
+    left: 30px;
+}
+ .title h3 i{
+    color: #fff;
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    position: absolute;
+    background: #333;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 40px;
+    left: -50px;
+}
+.title::after{
+    content:"";
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border-radius:50%;
+    position: absolute;
+    background: #333;
+    left: -11px;
+}
+.title dt {
+    margin-top: 10px;
+}
+ .title dt p{
+    vertical-align: middle;
+    display: inline-block;
+    height: 24px;
+    width: 90%;
+    color: #fff;
+    background: #333;
+    border-radius: 5px;
+    line-height: 24px;
+    padding: 0 0 0 30px;
+    position: relative;
+    margin:7px 0;
+} 
+.title dt p span{
+    float: right;
+}
+.title dt p span a{
+    background: #f1f1f1;
+    padding: 1px 5px;
+    border-radius: 5px;
+    font-size: 8px;
+    color: #333;
+    margin-right: 20px;
+}
+
+.title dt > i{
+    position: absolute;
+    width: 38px;
+    height: 38px;
+    background: #008080;
+    border-radius: 50%;
+    line-height: 38px;
+    left: -19px;
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    z-index:10;
+    color:#fff;
+}
+.title dt p span a:hover{
+    background-color:#c1c1c1;
+}
+.title .desc{
+    width: 90%;
+    padding-left: 30px;
+    line-height: 1.5;
+    position: relative;
+    font-size: 14px;
+}
+.title .desc i{
+    position: absolute;
+    left:8px;
+    font-size: 14px;
+}
+.works,.experience{
+    margin-top: 30px;
+}
+footer{
+    margin-top: 20px;
+    text-align: center;
+    padding-bottom: 20px;
+}
+footer a{
+    background-color: #111;
+    color:#fff;
+    padding:0 6px;
+}

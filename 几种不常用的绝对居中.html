@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>几种不常用的绝对居中 | 个人博客</title>
+    <link rel="shortcut icon" href="../images/logo1.png">
+    <link rel="stylesheet" href="../src/reset.css">
+    <link rel="stylesheet" href="blog.css">
+    <link rel="stylesheet" href="http://at.alicdn.com/t/font_1473180581_777307.css">
+</head>
+<body>
+    <nav>
+        <div class="content">
+            <figure>
+                <img src="../images/logo2.png" alt="logo">
+                <!-- <figcaption>
+                    <h2>guozl</h2>
+                </figcaption> -->
+            </figure>
+            <ul class="navbar clearfix">
+                <li><a href="">学无止境</a></li>
+                <li><a href="">生活感悟</a></li>
+                <li><a href="">旅行路途</a></li>
+                <li><a href="">互联网+</a></li>
+            </ul>
+            <div class="hid-menu">
+                <ul class="hid">
+                    <li><a href="">学无止境</a></li>
+                    <li><a href="">生活感悟</a></li>
+                    <li><a href="">旅行路途</a></li>
+                    <li><a href="">互联网+</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="main artilce clearfix">
+        <aside>
+            <div class="popular">
+                <h3>热门类别</h3>
+                <div class="line"></div>
+                <ul class="hot-article">
+                    <li class="first-img clearfix">
+                        <a href=""><img src="../images/page1.jpg" alt=""></a>
+                        <div class="info">
+                            <h4>脱单必备！男人这样发朋友圈，妹子才会心动</h4>
+                            <span><i class="iconfont w-date"></i>2016年5月18</span>
+                        </div>
+                    </li>
+                    <li  class="clearfix">
+                         <a href=""><img src="../images/page2.jpg" alt=""></a>
+                        <div class="info">
+                            <h4>脱单必备！男人这样发朋友圈，妹子才会心动</h4>
+                            <span><i class="iconfont w-date"></i>2016年5月18</span>
+                        </div>
+                    </li>
+                    <li class="clearfix">
+                         <a href=""><img src="../images/page1.jpg" alt=""></a>
+                        <div class="info">
+                            <h4>脱单必备！男人这样发朋友圈，妹子才会心动</h4>
+                            <span><i class="iconfont w-date"></i>2016年5月18</span>
+                        </div>
+                    </li>
+                    <li class="clearfix">
+                         <a href=""><img src="../images/page2.jpg" alt=""></a>
+                        <div class="info">
+                            <h4>脱单必备！男人这样发朋友圈，妹子才会心动</h4>
+                            <span><i class="iconfont w-date"></i>2016年5月18</span>
+                        </div>
+                    </li>
+                    <li class="clearfix">
+                         <a href=""><img src="../images/page1.jpg" alt=""></a>
+                        <div class="info">
+                            <h4>脱单必备！男人这样发朋友圈，妹子才会心动</h4>
+                            <span><i class="iconfont w-date"></i>2016年5月18</span>
+                        </div>
+                    </li>
+
+                </ul>
+            </div>
+            <div class="popular">
+                <h3>热门类别</h3>
+                <div class="line"></div>
+                <div class="article-type">
+                    <a href="" class="green">CSS&HTML</a>
+                    <a href="" class="blue">CSS</a>
+                    <a href="">HTML</a>
+                    <a href="" class="red">CSS&HTML</a>
+                    <a href="" class="orange">js</a>
+                    <a href="" class="red">生活</a>
+                    <a href="">摄影</a>
+                    <a href="" class="green">CSS&HTML</a>
+                    <a href="">CSS&HTML</a>
+                    <a href="" class="red">CSS&HTML</a>
+                </div>
+            </div>
+            <div class="popular">
+                <h3>热门类别</h3>
+                <div class="line"></div>
+                <div class="month"><a href="">2016年1月</a></div>
+                <div class="month"><a href="">2016年3月</a></div>
+                <div class="month"><a href="">2016年4月</a></div>
+                <div class="month"><a href="">2016年5月</a></div>
+            </div>
+            
+        </aside>
+        <article class="main-items">
+        <header>
+            <h1>几种不常用的CSS设置子元素绝对垂直居中方式</h1>
+            <div class="article-info">
+                <span class="wrote-time"><i class="iconfont w-location"></i>2016年7月16日</span>
+                <span class="wrote-location"><i class="iconfont w-time"></i>上海 · 普陀</span>
+            </div>
+            <div class="lines">
+                <div class="color-line"></div>
+            </div>
+        </header>
+            <div class="article-container">
+                <div class="summary">
+                    <p>在实际的开发应用中，总会碰到让子元素在父元素中绝对居中的情况，今天就探讨几种大家平时不常用的方式，给实际开发一点参考。</p>
+                </div>
+                <div class="article-img">
+                    <img src="../images/20160304.jpg" alt="主图">
+                </div>
+                <div class="article-text">            
+                    <p>第一种：position + transform，在完全不考虑IE浏览器的情况下可以放心使用</p>
+                    <code>
+                        <textarea disabled="disabled" rows="22">
+                        HTML
+                           <div class="div1">
+                                <div class="div2"></div>
+                            </div>
+                        CSS
+                            .div1{
+                                width: 400px;
+                                height: 400px;
+                                border:1px solid #f00;
+                                position: relative;
+                            }
+                            .div2{
+                                width: 200px;
+                                height: 200px;
+                                background-color: #ff0;
+                                position: absolute;
+                                top:50%;
+                                left:50%;
+                                transform:translate(-50%,-50%);
+                            }
+                        </textarea> 
+                    </code>
+                    <p>第二种：::before + ::after + display:inline-block，利用伪类撑起父元素的高度，利用inline元素的vertical-align: middle;与text-align:center完成</p>
+                    <code>
+                        <textarea rows="26" disabled="disabled">
+                        HTML
+                            <div class="div3">
+                                <div class="div4"></div>
+                            </div>
+                        CSS
+                            .div3{
+                                width: 400px;
+                                height: 400px;
+                                border:1px solid;
+                                text-align: center;
+                            }
+                            .div4{
+                                display: inline-block;
+                                width: 100px;
+                                height: 100px;
+                                background-color: green;
+                                vertical-align: middle;
+                            }
+                            .div3::before,.div3::after{
+                                content:"";
+                                display: inline-block;
+                                width: 1px;
+                                height: 100%;
+                                vertical-align: middle;
+                            }
+                        </textarea>
+                    </code>
+                    <p>第三种稍微常见一些就是利用display:table-cell</p>
+                    <code>
+                        <textarea rows="20" disabled="disabled">
+                        HTML:
+                            <div class="div5">
+                                <div class="div6"></div>
+                            </div>
+                        CSS:
+                            .div5{
+                                width: 400px;
+                                height: 400px;
+                                border:1px solid blue;
+                                display: table-cell;
+                                vertical-align: middle;
+                            }
+                                .div6{
+                                width: 100px;
+                                height: 100px;
+                                background: orange;
+                                margin: 0 auto;
+                            }
+                        </textarea>
+                    </code>
+                </div>
+            </div>
+        </article>
+    </section>
+    <div class="gototop">
+        <a href=""><i class="iconfont w-gototop"></i></a>
+    </div>
+    
+</body>
+</html>

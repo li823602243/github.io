@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>JS Bin</title>
+    <style>
+        .wrap{
+            overflow: hidden;
+            width: 800px
+            height: 200px;
+            border:1px solid;
+        }
+        .a{
+            width: 200px;
+            margin-left: 10px;
+            height: 200px;
+            border:1px solid #f00;
+            float: left;
+            position: relative;
+        }
+        canvas{
+            position: absolute;
+            top: 0;
+            left: 0;
+            background: #ccc;
+        }
+    </style>
+</head>
+<body>
+<div class="wrap">
+    <div class="a">
+        <canvas width="210" height="210" class=mycanvas data-setting='{"x":"100","y":"100","radius":"50","endAngle":"180"}'>
+            您的浏览器不支持canvas！
+        </canvas>
+    </div>
+    <div class="a">
+        <canvas width="210" height="210" class=mycanvas
+                data-setting='{"x":"100","y":"100","radius":"30","startAngle":"-90","endAngle":"360","lineWidth":"6.0","color":"blue"}'>
+            您的浏览器不支持canvas！
+        </canvas>
+    </div>
+    <div class="a">
+        <canvas width="210" height="210" class=mycanvas>
+            您的浏览器不支持canvas！
+        </canvas>
+    </div>
+</div>
+
+<script src="../public/js/jquery-1.11.1.min.js"></script>
+<script src="main.js"></script>
+<script>
+    $(function(){
+        myCanvas.init($('.mycanvas'));
+    })
+
+</script>
+</body>
+</html>

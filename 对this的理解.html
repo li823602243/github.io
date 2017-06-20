@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>对Javascript中this的理解 | 个人博客</title>
+    <link rel="shortcut icon" href="../images/logo1.png">
+    <link rel="stylesheet" href="../src/reset.css">
+    <link rel="stylesheet" href="blog.css">
+    <link rel="stylesheet" href="http://at.alicdn.com/t/font_1473180581_777307.css">
+</head>
+<body>
+    <nav>
+        <div class="content">
+            <figure>
+                <img src="../images/logo2.png" alt="logo">
+                <!-- <figcaption>
+                    <h2>guozl</h2>
+                </figcaption> -->
+            </figure>
+            <ul class="navbar clearfix">
+                <li><a href="">学无止境</a></li>
+                <li><a href="">生活感悟</a></li>
+                <li><a href="">旅行路途</a></li>
+                <li><a href="">互联网+</a></li>
+            </ul>
+            <div class="hid-menu">
+                <ul class="hid">
+                    <li><a href="">学无止境</a></li>
+                    <li><a href="">生活感悟</a></li>
+                    <li><a href="">旅行路途</a></li>
+                    <li><a href="">互联网+</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="main artilce clearfix">
+        <aside>
+            <div class="popular">
+                <h3>热门类别</h3>
+                <div class="line"></div>
+                <ul class="hot-article">
+                    <li class="first-img clearfix">
+                        <a href=""><img src="../images/page1.jpg" alt=""></a>
+                        <div class="info">
+                            <h4>脱单必备！男人这样发朋友圈，妹子才会心动</h4>
+                            <span><i class="iconfont w-date"></i>2016年5月18</span>
+                        </div>
+                    </li>
+                    <li  class="clearfix">
+                         <a href=""><img src="../images/page2.jpg" alt=""></a>
+                        <div class="info">
+                            <h4>脱单必备！男人这样发朋友圈，妹子才会心动</h4>
+                            <span><i class="iconfont w-date"></i>2016年5月18</span>
+                        </div>
+                    </li>
+                    <li class="clearfix">
+                         <a href=""><img src="../images/page1.jpg" alt=""></a>
+                        <div class="info">
+                            <h4>脱单必备！男人这样发朋友圈，妹子才会心动</h4>
+                            <span><i class="iconfont w-date"></i>2016年5月18</span>
+                        </div>
+                    </li>
+                    <li class="clearfix">
+                         <a href=""><img src="../images/page2.jpg" alt=""></a>
+                        <div class="info">
+                            <h4>脱单必备！男人这样发朋友圈，妹子才会心动</h4>
+                            <span><i class="iconfont w-date"></i>2016年5月18</span>
+                        </div>
+                    </li>
+                    <li class="clearfix">
+                         <a href=""><img src="../images/page1.jpg" alt=""></a>
+                        <div class="info">
+                            <h4>脱单必备！男人这样发朋友圈，妹子才会心动</h4>
+                            <span><i class="iconfont w-date"></i>2016年5月18</span>
+                        </div>
+                    </li>
+
+                </ul>
+            </div>
+            <div class="popular">
+                <h3>热门类别</h3>
+                <div class="line"></div>
+                <div class="article-type">
+                    <a href="" class="green">CSS&HTML</a>
+                    <a href="" class="blue">CSS</a>
+                    <a href="">HTML</a>
+                    <a href="" class="red">CSS&HTML</a>
+                    <a href="" class="orange">js</a>
+                    <a href="" class="red">生活</a>
+                    <a href="">摄影</a>
+                    <a href="" class="green">CSS&HTML</a>
+                    <a href="">CSS&HTML</a>
+                    <a href="" class="red">CSS&HTML</a>
+                </div>
+            </div>
+            <div class="popular">
+                <h3>热门类别</h3>
+                <div class="line"></div>
+                <div class="month"><a href="">2016年1月</a></div>
+                <div class="month"><a href="">2016年3月</a></div>
+                <div class="month"><a href="">2016年4月</a></div>
+                <div class="month"><a href="">2016年5月</a></div>
+            </div>
+            
+        </aside>
+        <article class="main-items">
+        <header>
+            <h1>对JS中this的理解</h1>
+            <div class="article-info">
+                <span class="wrote-time"><i class="iconfont w-location"></i>2016年7月26日</span>
+                <span class="wrote-location"><i class="iconfont w-time"></i>上海 · 普陀</span>
+            </div>
+            <div class="lines">
+                <div class="color-line"></div>
+            </div>
+        </header>
+            <div class="article-container">
+                <div class="summary">
+                    <p>其实this是一个老生常谈的问题了。由于JS中的this是在函数执行时才会确定，再加上所有的对象都可以调用函数，导致this到底指向谁就不是很好理解。</p>
+                </div>
+                <div class="article-img">
+                    <img src="../images/20160304.jpg" alt="主图">
+                </div>
+                <div class="article-text">            
+                    <p>当函数被当作对象的方法调用时，this指向的是该对象。</p>
+                    <code>
+                        <textarea disabled="disabled" rows="10">
+                            var cat ={
+                                name:"猫",
+                            }
+                            function say(a){
+                                alert(this.name+":"+ a)
+                            }
+                            cat.miao = say
+                            cat.miao("喵喵") //猫：喵喵
+                            //这是this = cat
+                        </textarea> 
+                    </code>
+                    <p>在函数内部调用：下面这样的情况说明this是被当作window的一个方法调用了</p>
+                    <code>
+                        <textarea rows="6" disabled="disabled">
+                        function aa(){
+                            alert(this)
+                        }
+                        aa()    //[object window]
+                        //这时的this指向window（没有测到指向underfined的情况，见谅）
+                        </textarea>
+                    </code>
+                    <p>在函数内部调用：当函数的内部还有函数时，其this又会默认指向window</p>
+                    <code>
+                        <textarea rows="29" disabled="disabled">
+                        var numbers = {     
+                                a: 5,   
+                                b: 1,   
+                                sum: function() {   
+                                    console.log(this === numbers); // => true   
+                                    function c() {     
+                                    console.log(this === numbers); // => false   
+                                        return this.numberA + this.numberB;   
+                                    }    
+                                return c();   
+                           }   
+                        };   
+                        numbers.sum(); // => NaN 
+
+                        <!-- 碰到此类一般是给该函数绑定this。 -->
+                        var numbers = {     
+                                a: 5,   
+                                b: 1,   
+                                sum: function() {   
+                                    console.log(this === numbers); // => true   
+                                    function c() {     
+                                    console.log(this === numbers); // => true   
+                                        return this.numberA + this.numberB;   
+                                    }    
+                                 return c.call(this);//这个this指的是numbers      
+                           }   
+                        };   
+                        numbers.sum(); // => 6
+                        </textarea>
+                    </code>
+                    <p>在new中调用:在使用new时this是经过了这几个步骤===1、创建this={}，2、在new执行时改变this，并添加属性和方法，3、返回被改变的this</p>
+                    <code>
+                        <textarea rows="33" disabled="disabled">
+                        function Person(name){
+                            this.name = name
+                        }
+                        var baby = new Person("guozl");
+                        console.log(baby.name)   //guozl
+
+
+                        <!-- 当构造函数返回一个对象时，this指向返回的对象 -->
+                        function Person(){
+                            this.name = "guozl";
+                            this.age = "26";
+                            return {
+                                allName:"guozilin"
+                            }   //返回的是一个对象
+                        }
+                        var baby = new Person();
+                        console.log(baby.allName);     //这个this指的是"allName:'guozilin'"这一对象
+                        console.log(baby.name);      //underfined
+                        console.log(baby.age);      //underfined
+
+                         <!-- 当忘记使用new时，这是相当于函数调用，this指向window -->
+
+                         function Person(name,age){
+                            this.name = name;
+                            this.age = age;
+                            return this;
+                        }                        
+                        var baby = Person("guozl","26");
+                        console.log(baby.name)          //guozl
+                        console.log(baby.age)           //26
+                        console.log(baby === window)    //true
+                        </textarea>
+                    </code>
+                    <p>使用call和apply直接调用</p>
+                    <code>
+                        <textarea rows="16" disabled="disabled">
+                        func.call(obj,arg1,arg2,...)
+                        第一个参数作为this的指代对象，之后的参数作为函数的参数
+                        var jhon ={
+                            firstName:"Jhon",
+                            lastName:"Smith"
+                        };
+                        function as(a,b){
+                            console.log(this[a] +" "+ this[b])
+                        }
+                        as.call(jhon,'firstName','lastName')            //Jhon Smith this指向jhon对象
+
+                        <!-- 至于apply，其只是以数组的方传入参数，其它部分是一样的，如下: -->
+                        as.call(john, 'firstName', 'surname')   
+                        as.apply(john, ['firstName', 'surname'])
+                        </textarea>
+                    </code>
+                    <p>.bind()绑定预先指定的this。.bind() 方法的作用是创建一个新的函数，执行时的上下文环境为 .bind() 传递的第一个参数，它允许创建预先设置好 this 的函数。</p>
+                    <code>
+                        <textarea rows="11" disabled="disabled">
+                        var nums ={
+                            array:[1,2,3,4,5],
+                            getNums:function(){
+                                return this.array;
+                            }
+                        };
+                        var getNums = nums.getNums(nums);
+                        getNums()               //getNums is not a function
+                        var bindGetNums = nums.getNums.bind(nums);
+                        bindGetNums()           //[1,2,3,4,5]
+                        </textarea>
+                    </code>
+                  <p>一个绑定函数即使使用 .call() 或者 .apply()传入其他不同的上下文环境，也不会更改它之前连接的上下文环境，重新绑定也不会起任何作用。
+
+只有在构造器调用时，绑定函数可以改变上下文，然而这并不是特别推荐的做法。</p>
+                </div>
+            </div>
+        </article>
+    </section>
+    <div class="gototop">
+        <a href=""><i class="iconfont w-gototop"></i></a>
+    </div>
+    
+</body>
+</html>

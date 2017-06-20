@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<!--
+Created using JS Bin
+http://js.jirengu.com
+
+Copyright (c) 2016 by guozilin (http://js.jirengu.com/zaji/1/edit)
+
+Released under the MIT license: http://jsbin.mit-license.org
+-->
+<meta name="robots" content="noindex">
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>JS Bin</title>
+<style id="jsbin-css">
+*{padding: 0;margin: 0;}
+.wr{
+   width:240px;
+  height: 240px;
+  border:1px solid #f00;
+  margin:30px;
+  position: relative;
+}
+#id1{
+  width:240px;
+  height: 240px;
+}
+#id1 img{vertical-align: middle;}
+#mask{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,.2);
+  top:0;
+  left: 0;
+  z-index:2;
+ transition:all 0.5s;
+  transform:translate(0,242px);
+}
+#mask div{width: 100%;height: 50%;background: #ccc;margin-top: 50%;opacity: 0;}
+
+
+</style>
+</head>
+<body>
+  <div class="wr">
+<div id="id1">
+  <img src="http://o8197y60e.bkt.clouddn.com/ss.png" alt="图片">
+</div>
+    <div id="mask">
+    <div></div>
+  </div>
+    </div>
+<script id="jsbin-javascript">
+window.onload = function(){
+   var oDiv = document.getElementById('id1');
+  var oMask =document.getElementById('mask');
+    oDiv.onmouseenter =  function(e){
+     var curX = e.clientX;
+     var curY = e.clientY;
+    
+//   var body = document.getElementsByTagName('body')[0];
+      //父元素宽高
+    var oW =oDiv.offsetWidth;
+    var oH = oDiv.offsetHeight;
+    //父元素偏移
+    var oL = oDiv.offsetLeft;
+    var oT = oDiv.offsetTop;
+    //相当于以图像中心做原点画XY坐标轴
+    var left = curX - oL - oW/2;
+    var top = curY - oT - oH/2;
+    var curDeg = Math.round((Math.atan2(top,left)*180/Math.PI+180)/90)%4;
+//     curDeg 有四种值分别代表从四条边进入0-3"左上右下"
+   // curDeg === 0?console.log("左"):(curDeg === 1?console.log("上"):(curDeg === 2?console.log("右"):console.log("下")))
+      if(curDeg === 0){
+          oMask.style.transform="translate(-242px,0)";
+          //oMask.style.display="none";
+      }else if(curDeg ===1){
+         oMask.style.transform="translate(0,-242px)";
+      }else if(curDeg ===2){
+         oMask.style.transform="translate(242px,0)";
+      }else if(curDeg ===3){
+         oMask.style.transform="translate(0,242px)";
+      }
+      setTimeout(function(){
+        oMask.style.transform="translate(0,0)";
+      },30);
+  }
+     oDiv.onmouseleave =  function(e){
+     var curX = e.clientX;
+     var curY = e.clientY;
+    
+//   var body = document.getElementsByTagName('body')[0];
+      //父元素宽高
+    var oW =oDiv.offsetWidth;
+    var oH = oDiv.offsetHeight;
+    //父元素偏移
+    var oL = oDiv.offsetLeft;
+    var oT = oDiv.offsetTop;
+    //相当于以图像中心做原点画XY坐标轴
+    var left = curX - oL - oW/2;
+    var top = curY - oT - oH/2;
+    var curDeg = Math.round((Math.atan2(top,left)*180/Math.PI+180)/90)%4;
+//     curDeg 有四种值分别代表从四条边进入0-3"左上右下"
+   // curDeg === 0?console.log("左"):(curDeg === 1?console.log("上"):(curDeg === 2?console.log("右"):console.log("下")))
+      if(curDeg === 0){
+          oMask.style.transform="translate(-242px,0)";
+          //oMask.style.display="none";
+      }else if(curDeg ===1){
+         oMask.style.transform="translate(0,-242px)";
+      }else if(curDeg ===2){
+         oMask.style.transform="translate(242px,0)";
+      }else if(curDeg ===3){
+         oMask.style.transform="translate(0,242px)";
+      }
+  }
+  
+}
+</script>
+</body>
+</html>
